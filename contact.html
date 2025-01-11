@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="contactus.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"> <img src="logo.png" width="120px" alt=""><b></b></a>
+                </div>
+                <button class="menu-toggle" id="toggleMenu">☰ Menu</button>
+                <div class="nav" id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li> 
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="sell.html">Sell</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="container">
+                <div class="box">
+                    <h2 style="text-decoration: underline;">Contact Us</h2>
+                    <form id="contact-form" class="contact-form">
+                        <br>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="message">Inquiries:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        
+                        <button type="submit" class="submit-button">Submit</button>
+                    </form>
+                    <p id="form-message" class="form-message"></p>
+                </div>
+            </div>
+        <script type="module" src="contactus.js"></script>
+</body>
