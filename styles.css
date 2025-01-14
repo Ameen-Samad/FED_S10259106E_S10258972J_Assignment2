@@ -5,6 +5,7 @@
     padding: 0;
 }
 
+/*navbar*/
 .navbar {
     background-color: #040c1c;
     display: flex;
@@ -25,10 +26,7 @@
 
 .nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+    padding-right: 200px;
 }
 
 .nav li {
@@ -61,8 +59,10 @@ ul li a{
 }
 
 .nav a:hover {
-    background-color: #97CADB;  
+    background-color: #0a1836;  
+    color: #9ac8f9
 }
+
 
 
 .p{
