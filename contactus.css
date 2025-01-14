@@ -97,7 +97,7 @@ ul li{
     transition: background-color 0.3s;
 }
 .nav a:hover {
-    background-color: #ff6600;
+    background-color: #97CADB;  
 }
 ul li a{
     font-family: inknut antiqua;
