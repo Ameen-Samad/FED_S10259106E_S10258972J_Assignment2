@@ -63,6 +63,60 @@ ul li a{
     color: #9ac8f9
 }
 
+.promo{
+    background-color: #b4bab6;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.Himg {
+    width: 100%;
+    max-width: 100%;
+    height: 570px; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%; 
+    display: block;
+    object-fit: cover;  
+}
+
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    width: 3%;
+    height: 8%;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
 
 
 .p{

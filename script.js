@@ -150,3 +150,50 @@ window.onload = function() {
     setupCarousel(".container:first-child", "add-to-cart-btn"); 
     setupCarousel(".container:nth-child(2)", "best-prices-add-to-cart"); 
 };
+
+/** Initialize Image Slider */
+document.addEventListener('DOMContentLoaded', () => {
+    initializeImageSlider();
+});
+
+function initializeImageSlider() {
+    const images = [
+        { src: "picts/nb banner.webp", link: "./products.html" },
+        { src: "picts/asic banner.webp", link: "./products.html" },
+        { src: "picts/adidas banner.webp", link: "./kid.html" }
+    ]; // Array of images and their links
+
+    let currentIndex = 0; // Current index of the image slider
+    const slideContainer = document.querySelector('.Himg'); // Select the slide container
+    const leftBtn = document.querySelector('.left-btn'); // Select the left button
+    const rightBtn = document.querySelector('.right-btn'); // Select the right button
+
+    // Check if slideContainer exists
+    if (!slideContainer) return;
+
+    // Function to show an image based on the index
+    const showImage = (index) => {
+        slideContainer.innerHTML = `<a href="${images[index].link}"><img src="${images[index].src}" class="slide-img" alt="Slide ${index + 1}"></a>`;
+    };
+
+    // Function to cycle through images automatically
+    const cycleImage = () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    };
+
+    // Event listener for left button click
+    leftBtn?.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    // Event listener for right button click
+    rightBtn?.addEventListener('click', cycleImage);
+
+    // Automatically cycle images every 5 seconds
+    setInterval(cycleImage, 5000);
+
+    // Show the first image initially
+    showImage(currentIndex);
+}
