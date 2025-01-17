@@ -153,6 +153,10 @@ window.onload = function() {
 
 /** Initialize Image Slider */
 document.addEventListener('DOMContentLoaded', () => {
+    initializeCardSlider(); // Initialize card slider functionality
+});
+
+document.addEventListener('DOMContentLoaded', () => {
     initializeImageSlider();
 });
 
@@ -160,7 +164,7 @@ function initializeImageSlider() {
     const images = [
         { src: "../picts/nb banner.webp", link: "./products.html" },
         { src: "../picts/asic banner.webp", link: "./products.html" },
-        { src: "../picts/adidas banner.webp", link: "./kid.html" }
+        { src: "../picts/adidas banner.webp", link: "./products.html" }
     ]; // Array of images and their links
 
     let currentIndex = 0; // Current index of the image slider
@@ -197,3 +201,42 @@ function initializeImageSlider() {
     // Show the first image initially
     showImage(currentIndex);
 }
+
+/* Product slider*/
+function initializeCardSlider() {
+    const sliderContainer = document.querySelector('.slider-container');
+    const dots = document.querySelectorAll('.dot');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    const totalSlides = Math.ceil(document.querySelectorAll('.flex-item').length / 3);
+    let currentCardIndex = 0;
+
+    if (!sliderContainer) return;
+
+    const updateSlider = () => {
+        sliderContainer.style.transform = `translateX(${-currentCardIndex * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentCardIndex));
+    };
+
+    nextBtn?.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex + 1) % totalSlides;
+        updateSlider();
+    });
+
+    prevBtn?.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            currentCardIndex = i;
+            updateSlider();
+        });
+    });
+
+    updateSlider();
+}
+
+initializeCardSlider();
+
