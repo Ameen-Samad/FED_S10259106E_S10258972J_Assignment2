@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = 'your-api-key';
+    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2bmVzYnFoZWpnbHNscmppa2l6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4Mjg5NzQsImV4cCI6MjA1MjQwNDk3NH0.CBN0QCBl0-8YM5Da-aEIJyFFc365MV8RhwbDL0pXB9k';
     const userId = 'current-user-id'; // Replace with logic to get the logged-in user ID
   
     try {
-      const response = await fetch(`https://your-restdb-url/rest/users/${userId}`, {
+      const response = await fetch(`https://hvnesbqhejglslrjikiz.supabase.co/${userId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
