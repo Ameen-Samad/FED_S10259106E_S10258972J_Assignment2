@@ -205,32 +205,44 @@ function initializeImageSlider() {
 /* Product slider*/
 function initializeCardSlider() {
     const sliderContainer = document.querySelector('.slider-container');
-    const dots = document.querySelectorAll('.dot');
+    const products = document.querySelectorAll('.flex-item');
     const nextBtn = document.querySelector('.next');
     const prevBtn = document.querySelector('.prev');
-    const totalSlides = Math.ceil(document.querySelectorAll('.flex-item').length / 3);
-    let currentCardIndex = 0;
+    const controls = document.querySelector('.controls');
+    const productsPerPage = 7;
 
-    if (!sliderContainer) return;
+    let currentPage = 0;
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    // Generate dots dynamically
+    controls.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        controls.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
 
     const updateSlider = () => {
-        sliderContainer.style.transform = `translateX(${-currentCardIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentCardIndex));
+        sliderContainer.style.transform = `translateX(${-currentPage * 100}%)`;
+        dots.forEach((dot, index) => dot.classList.toggle('active', index === currentPage));
     };
 
-    nextBtn?.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex + 1) % totalSlides;
+    nextBtn.addEventListener('click', () => {
+        currentPage = (currentPage + 1) % totalPages;
         updateSlider();
     });
 
-    prevBtn?.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex - 1 + totalSlides) % totalSlides;
+    prevBtn.addEventListener('click', () => {
+        currentPage = (currentPage - 1 + totalPages) % totalPages;
         updateSlider();
     });
 
-    dots.forEach((dot, i) => {
+    dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            currentCardIndex = i;
+            currentPage = index;
             updateSlider();
         });
     });
@@ -238,5 +250,6 @@ function initializeCardSlider() {
     updateSlider();
 }
 
-initializeCardSlider();
+document.addEventListener('DOMContentLoaded', initializeCardSlider);
+
 

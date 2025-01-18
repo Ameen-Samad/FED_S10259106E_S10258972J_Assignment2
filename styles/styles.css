@@ -60,7 +60,7 @@ ul li a{
 
 .nav a:hover {
     background-color: #0a1836;  
-    color: #9ac8f9
+    color: #9ac8f9;
 }
 
 .promo{
@@ -130,7 +130,7 @@ ul li a{
     max-width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 10px 60px; 
+    padding: 10px 60px;
 }
 
 .slider-container {
@@ -139,23 +139,56 @@ ul li a{
 }
 
 .flex-item {
-    flex: 0 0 14.28%; /* 100 / 7 to fit 7 items per slide */
+    flex: 0 0 14.28%; /* Ensures 7 items per page */
     box-sizing: border-box;
     padding: 15px;
-    text-align: center; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Space between image and text */
+    background-color: #fff; /* Default background */
+    border: 1px solid transparent; /* Initially invisible border */
+    border-radius: 8px; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
 }
 
+.flex-item:hover {
+    transform: translateY(-5px); /* Lift the item slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow */
+    background-color: #f9f9f9; /* Lighten the background */
+    border-color: #e0e0e0; /* Make border visible on hover */
+}
+
+/* Image styling */
 .flex-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
+.flex-item:hover img {
+    transform: scale(1.05); /* Zoom the image slightly on hover */
+}
+
+/* Text styling */
 .flex-item p {
-    margin: 8px 0;
+    margin: 0;
     font-size: 14px;
     color: #333;
     line-height: 1.4;
+    text-align: center;
+}
+
+.flex-item p:nth-child(2) {
+    font-weight: bold; /* Highlight product name */
+}
+
+.flex-item p:nth-child(3) {
+    color: #555; /* Slightly dim discount price */
 }
 
 .slider-btn {
@@ -200,8 +233,23 @@ ul li a{
 }
 
 
+.rc {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 60px;
+}
 
-
+/* footer */
+.footer {
+    background-color: #0a1836;
+    color: #9ac8f9;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
 
 
 .p{
