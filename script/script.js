@@ -165,12 +165,12 @@ function initializeImageSlider() {
         { src: "../picts/nb banner.webp", link: "./products.html" },
         { src: "../picts/asic banner.webp", link: "./products.html" },
         { src: "../picts/adidas banner.webp", link: "./products.html" }
-    ]; // Array of images and their links
+    ]; 
 
-    let currentIndex = 0; // Current index of the image slider
-    const slideContainer = document.querySelector('.Himg'); // Select the slide container
-    const leftBtn = document.querySelector('.left-btn'); // Select the left button
-    const rightBtn = document.querySelector('.right-btn'); // Select the right button
+    let currentIndex = 0; 
+    const slideContainer = document.querySelector('.Himg'); 
+    const leftBtn = document.querySelector('.left-btn'); 
+    const rightBtn = document.querySelector('.right-btn'); 
 
     // Check if slideContainer exists
     if (!slideContainer) return;
