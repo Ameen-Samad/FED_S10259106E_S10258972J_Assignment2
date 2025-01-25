@@ -171,7 +171,7 @@ function initializeCardSlider() {
     const productsPerPage = 7;
 
     let currentPage = 0;
-    const totalPages = Math.ceil(products.length / productsPerPage);
+    const totalPages = 2;
 
     // Generate dots dynamically
     controls.innerHTML = '';
