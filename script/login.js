@@ -20,6 +20,8 @@ async function login(email, password) {
 
     if (user) {
       alert('Login successful!');
+      sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+      window.location.href = 'profile.html';
     } else {
       const errorMessageElement = document.getElementById('errorMessage');
       if (errorMessageElement) {

@@ -1,5 +1,4 @@
-/* validation for contact form */
-document.getElementById("contact-form").addEventListener("submit", function(event) {
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -31,21 +30,39 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         message: message,
     };
 
-    let savedContacts = JSON.parse(localStorage.getItem("contactMessages")) || [];
-    savedContacts.push(contactData);
-    localStorage.setItem("contactMessages", JSON.stringify(savedContacts));
+    try {
+        const BASE_URL = 'https://loginid-056f.restdb.io/rest/contactus?max=2'; 
+        const API_KEY = '6785c5c5630e8a5f6d0b141f'; 
 
-    formMessage.textContent = "Thank you for contacting us! Your message has been saved.";
-    formMessage.style.color = "green";
+        const response = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': API_KEY,
+            },
+            body: JSON.stringify(contactData),
+        });
 
-    document.getElementById("contact-form").reset();
+        if (response.ok) {
+            formMessage.textContent = "Thank you for contacting us! Your message has been saved.";
+            formMessage.style.color = "green";
+            document.getElementById("contact-form").reset();
+        } else {
+            formMessage.textContent = "Failed to send your message. Please try again later.";
+            formMessage.style.color = "#ff6600";
+        }
+    } catch (error) {
+        console.error("Error saving contact data:", error);
+        formMessage.textContent = "An error occurred. Please try again later.";
+        formMessage.style.color = "#ff6600";
+    }
 });
 
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
-/* menu */
+
 const menuToggle = document.getElementById("toggleMenu")
 const navbar = document.getElementById("nav");
 

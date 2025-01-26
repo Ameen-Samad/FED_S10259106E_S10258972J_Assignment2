@@ -1,201 +1,120 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2bmVzYnFoZWpnbHNscmppa2l6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4Mjg5NzQsImV4cCI6MjA1MjQwNDk3NH0.CBN0QCBl0-8YM5Da-aEIJyFFc365MV8RhwbDL0pXB9k';
-    const userId = 'current-user-id'; // Replace with logic to get the logged-in user ID
+    const BASE_URL = 'https://loginid-056f.restdb.io/rest/account';
+    const API_KEY = '6785c5c5630e8a5f6d0b141f';
+
+    const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+      alert('No user logged in. Redirecting to login page...');
+      window.location.href = 'login.html';
+      return;
+    }
   
     try {
-      const response = await fetch(`https://hvnesbqhejglslrjikiz.supabase.co/${userId}`, {
+      const userNameElement = document.getElementById('user-name');
+      const userInfoElement = document.getElementById('user-info');
+      const userListingsElement = document.getElementById('user-listings');
+      const userProfitsElement = document.getElementById('user-profits');
+      const userSalesElement = document.getElementById('user-sales');
+  
+      if (userNameElement) userNameElement.textContent = loggedInUser.username;
+      if (userInfoElement) userInfoElement.textContent = `Email: ${loggedInUser.email}`;
+
+      const listingsResponse = await fetch(`${BASE_URL}?q={"userId":"${loggedInUser._id}"}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'x-apikey': apiKey,
+          'x-apikey': API_KEY,
         },
       });
   
-      if (response.ok) {
-        const user = await response.json();
-        document.getElementById('user-name').textContent = user.name;
-        document.getElementById('user-info').textContent = user.info || 'No additional info provided.';
-        document.getElementById('user-profits').textContent = `$${user.profits || 0.00}`;
-        document.getElementById('user-sales').textContent = `${user.sales || 0} items sold`;
-  
-        const listingsElement = document.getElementById('user-listings');
-        listingsElement.innerHTML = user.listings?.length
-          ? user.listings.map(listing => `<p>${listing}</p>`).join('')
-          : '<p>No listings available.</p>';
-      } else {
-        console.error('Failed to fetch user data:', response.statusText);
+      if (!listingsResponse.ok) {
+        throw new Error(`Error fetching listings: ${listingsResponse.status}`);
       }
+  
+      const listings = await listingsResponse.json();
+  
+      if (userListingsElement) {
+        userListingsElement.innerHTML = '';
+        if (listings.length === 0) {
+          userListingsElement.innerHTML = '<p>No listings available.</p>';
+        } else {
+          listings.forEach((listing) => {
+            const listingElement = document.createElement('p');
+            listingElement.textContent = `${listing.title} - ${listing.price}`;
+            userListingsElement.appendChild(listingElement);
+          });
+        }
+      }
+
+      if (userProfitsElement) userProfitsElement.textContent = `$${loggedInUser.profits || 0.0}`;
+      if (userSalesElement) userSalesElement.textContent = `${loggedInUser.sales || 0} items sold`;
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error loading profile data:', error);
+      alert('Failed to load profile data. Please try again later.');
     }
   });
-  /* menu */
-window.onload = function() {
-    const menuToggle = document.getElementById("toggleMenu")
-    const navbar = document.getElementById("nav");
 
-    function toggleMenu() {
-        if (navbar.style.display === 'flex'){
-            navbar.style.display = 'none';
-            menuToggle.textContent = "☰ Menu";
-        } else {
-            navbar.style.display = 'flex';
-            menuToggle.textContent = "✖ Close"; 
-        }
+
+  async function addListing(userId, newListing) {
+    const BASE_URL = 'https://loginid-056f.restdb.io/rest/account';
+    const API_KEY = '6785c5c5630e8a5f6d0b141f';
+  
+    try {
+      const response = await fetch(`${BASE_URL}/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-apikey': API_KEY,
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error fetching user data: ${response.status}`);
+      }
+  
+      const user = await response.json();
+
+      const updatedListings = user.listings || [];
+      updatedListings.push(newListing);
+
+      const updateResponse = await fetch(`${BASE_URL}/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-apikey': API_KEY,
+        },
+        body: JSON.stringify({ listings: updatedListings }),
+      });
+  
+      if (updateResponse.ok) {
+        console.log('Listing added successfully!');
+      } else {
+        console.error('Failed to update listings:', updateResponse.status);
+      }
+    } catch (error) {
+      console.error('Error adding listing:', error);
     }
+  }
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 650) {
-            nav.style.display = "flex";
-        } else {
-            nav.style.display = "none";
-        }
-    });
-    menuToggle.addEventListener('click', toggleMenu)
-
-    /* cart */
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotalDisplay = document.getElementById("cart-total");
-    const checkoutButton = document.getElementById("checkout-button");
+  const userId = 'user123'; 
+  const newListing = {
+    title: 'Gaming Laptop',
+    description: 'High-performance gaming laptop, 16GB RAM, 1TB SSD.',
+    price: 1200.0,
+    createdAt: new Date().toISOString(),
+  };
+  addListing(userId, newListing);
 
 
-    const cartButton = document.getElementById("cart-button");
-    const cartPopup = document.getElementById("cart-popup");
-    const closeCartButton = document.getElementById("close-cart-button");
-
-    cartButton.addEventListener("click", () => {
-        cartPopup.classList.toggle("visible");
-        cartPopup.classList.toggle("hidden");
-    });
-
-    closeCartButton.addEventListener("click", () => {
-        cartPopup.classList.add("hidden");
-        cartPopup.classList.remove("visible");
-    });
-
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    function updateCart() {
-        cartItemsContainer.innerHTML = "";
-        let total = 0;
-        cart.forEach((item, index) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("cart-item");
-            itemDiv.innerHTML = `
-                <p>${item.name} - $${item.price.toFixed(2)}</p>
-                <button class="remove-from-cart" data-index="${index}">Remove</button>
-            `;
-            cartItemsContainer.appendChild(itemDiv);
-            total += item.price; 
-        });
-        cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
-        localStorage.setItem("cart", JSON.stringify(cart)); 
-    }
-
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", () => {
-            const name = button.dataset.name;
-            const price = parseFloat(button.dataset.price);
-            cart.push({ name, price });
-            updateCart();
-        });
-    });
-
-    cartItemsContainer.addEventListener("click", event => {
-        if (event.target.classList.contains("remove-from-cart")) {
-            const index = event.target.dataset.index;
-            cart.splice(index, 1);
-            updateCart();
-        }
-    });
-
-    window.addEventListener("beforeunload", () => {
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    });
-
-    const removeAllButton = document.getElementById("remove-all");
-    removeAllButton.addEventListener("click", () => {
-        cart = []; 
-        updateCart(); 
-    });
-    updateCart();
-
-    /* JS for box and card to move when hovered over */
-    const boxes = document.querySelectorAll('.box');
-
-    boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-            box.style.transform = 'scale(1.05)';
-            box.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.2)';
-            box.style.borderColor = '#ff6600';
-        });
-
-        box.addEventListener('mouseout', () => {
-            box.style.transform = 'scale(1)';
-            box.style.boxShadow = 'none';
-            box.style.borderColor = 'transparent';
-        });
-    });
-    /* card carousel */
-    function setupCarousel(containerSelector, addToCartButtonId) {
-        const container = document.querySelector(containerSelector);
-        const leftArrow = container.querySelector(".left-arrow");
-        const rightArrow = container.querySelector(".right-arrow");
-        const cardWrapper = container.querySelector(".card-wrapper");
-        const addToCartBtn = document.getElementById(addToCartButtonId);
-
-        let currentIndex = 0;
-        const cards = container.querySelectorAll(".card");
-
-        function updateCarousel() {
-            cardWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            const activeCard = cards[currentIndex];
-            const cardName = activeCard.getAttribute("data-name");
-            const cardPrice = activeCard.getAttribute("data-price");
-
-            addToCartBtn.textContent = `Add ${cardName} to Cart - $${cardPrice}`;
-            addToCartBtn.setAttribute("data-name", cardName);
-            addToCartBtn.setAttribute("data-price", cardPrice);
-        }
-
-        leftArrow.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            updateCarousel();
-        });
-
-        rightArrow.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updateCarousel();
-        });
-
-        addToCartBtn.addEventListener("click", () => {
-            const cardName = addToCartBtn.getAttribute("data-name");
-            const cardPrice = parseFloat(addToCartBtn.getAttribute("data-price"));
-        });
-
-        updateCarousel();
-    }
-
-    setupCarousel(".container:first-child", "add-to-cart-btn"); 
-    setupCarousel(".container:nth-child(2)", "best-prices-add-to-cart"); 
-};
-
-
-/* Initialize Dropdown Menu */
 document.addEventListener('DOMContentLoaded', () => {
-    initializeDropdown(); // Initialize dropdown menu functionality
+    initializeDropdown(); 
 });
 function initializeDropdown() {
-    const dropdown = document.querySelector('.dropdown'); // Select the dropdown element
-    const dropdownContent = document.getElementById('dropdownContent'); // Select the dropdown content element
+    const dropdown = document.querySelector('.dropdown'); 
+    const dropdownContent = document.getElementById('dropdownContent'); 
 
-    // Check if both dropdown and dropdownContent exist
     if (dropdown && dropdownContent) {
-        // Show dropdown content on mouse enter
         dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
-        // Hide dropdown content on mouse leave
         dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
     }
 }
