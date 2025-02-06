@@ -17,61 +17,69 @@ function initializeDropdown() {
 
 
 
-const filters = document.querySelectorAll(".filter");
-const products = document.querySelectorAll(".flex-item");
+document.addEventListener("DOMContentLoaded", function () {
+  const filters = document.querySelectorAll(".filter");
+  const products = document.querySelectorAll(".flex-item");
 
-const updateGenderLabel = (product, gender) => {
-  const nameElement = product.querySelector("p:nth-child(2)");
-  const currentText = nameElement.textContent;
-  
-  if (gender === "women") {
-    if (!currentText.startsWith("(W) ")) {
-      nameElement.textContent = "(W) " + currentText;
-    }
-  } else {
-    nameElement.textContent = currentText.replace(/^\(W\) /, "");
-  }
-};
-
-products.forEach(product => {
-  const gender = product.dataset.gender;
-  updateGenderLabel(product, gender);
-});
-
-filters.forEach(filter => {
-  filter.addEventListener("change", () => {
-    const activeFilters = {
-      gender: Array.from(filters)
-        .filter(f => f.checked && f.name === "gender")
-        .map(f => f.value),
-      price: Array.from(filters)
-        .filter(f => f.checked && f.name === "price")
-        .map(f => f.value),
-      brand: Array.from(filters)
-        .filter(f => f.checked && f.name !== "gender" && f.name !== "price")
-        .map(f => f.value),
-    };
-
-    products.forEach(product => {
-      const brand = product.dataset.brand;
-      const price = parseFloat(product.dataset.price);
-      const gender = product.dataset.gender;
-
-      updateGenderLabel(product, gender);
-
-      const genderMatch = activeFilters.gender.length === 0 || 
-                          activeFilters.gender.includes("all") || 
-                          activeFilters.gender.includes(gender);
-      
-      const priceMatch = activeFilters.price.length === 0 || 
-                         activeFilters.price.includes(product.dataset.price);
-      
-      const brandMatch = activeFilters.brand.length === 0 || 
-                         activeFilters.brand.includes(brand);
-
-      product.style.display = (genderMatch && priceMatch && brandMatch) 
-        ? "block" 
-        : "none";
-    });
+  // Add change event to all filter checkboxes
+  filters.forEach(filter => {
+      filter.addEventListener("change", applyFilters);
   });
+
+  function applyFilters() {
+      // Retrieve all selected filters from each group
+      const selectedGenders = getSelectedFilters("gender");
+      const selectedPrices  = getSelectedFilters("price");
+      const selectedBrands  = getSelectedFilters("brand");
+
+      products.forEach(product => {
+          // Get the product name from the first <p> element
+          const productName = product.querySelector("p").textContent;
+
+          // Get product price from data-price attribute if available, else extract it from the text content.
+          let productPrice = product.dataset.price
+              ? parseFloat(product.dataset.price)
+              : parseFloat(product.querySelector("p:nth-of-type(2)").textContent.replace("SG$", ""));
+
+          // Determine the product brand using data-brand attribute if present.
+          const productBrand = product.dataset.brand ? product.dataset.brand : getProductBrandFromName(productName);
+          
+          // Identify gender: products with "(W)" in the name are women's products.
+          const productGender = productName.includes("(W)") ? "women" : "men";
+
+          // Check if the product matches each of the selected filters.
+          const matchesGender = selectedGenders.length === 0 || selectedGenders.includes("all") || selectedGenders.includes(productGender);
+          const matchesPrice  = selectedPrices.length  === 0 || selectedPrices.includes(getPriceRange(productPrice));
+          const matchesBrand  = selectedBrands.length  === 0 || selectedBrands.includes(productBrand);
+
+          // Display product if it matches all filters; otherwise, hide it.
+          if (matchesGender && matchesPrice && matchesBrand) {
+              product.style.display = "block";
+          } else {
+              product.style.display = "none";
+          }
+      });
+  }
+
+  // Helper function to return all selected values for a given filter name.
+  function getSelectedFilters(filterName) {
+      return Array.from(document.querySelectorAll(`input[name='${filterName}']:checked`)).map(input => input.value);
+  }
+
+  // Determine the price range based on the product price.
+  function getPriceRange(price) {
+      if (price < 100) return "below100";
+      if (price >= 100 && price <= 200) return "100to200";
+      if (price > 200 && price <= 300) return "200to300";
+      return "over300";
+  }
+
+  // Fallback to determine the product brand based on its name, if no data-brand is present.
+  function getProductBrandFromName(name) {
+      if (name.includes("Nike")) return "Nike";
+      if (name.includes("Adidas")) return "Adidas";
+      if (name.includes("NB")) return "New Balance";
+      return "Other";
+  }
 });
+
