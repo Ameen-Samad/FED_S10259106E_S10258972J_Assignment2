@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New</title>
+    <title>Retail</title>
     <link rel="stylesheet" href="..\styles\new.css">
     <link rel="stylesheet" href="..\styles\styles.css" type="text/css">
 </head>
@@ -33,69 +33,132 @@
     </div>
 
     <div class="container">
-        <div class="filter-container">
-          <h3>Filter By</h3>
-          <ul>
-            <li>
-              <input type="checkbox" id="adidas" value="Adidas" class="filter">
-              <label for="adidas">Adidas</label>
-            </li>
-            <li>
-              <input type="checkbox" id="nike" value="Nike" class="filter">
-              <label for="nike">Nike</label>
-            </li>
-            <li>
-              <input type="checkbox" id="new-balance" value="New Balance" class="filter">
-              <label for="new-balance">New Balance</label>
-            </li>
-            <li>
-              <input type="checkbox" id="under-200" value="Under 200" class="filter">
-              <label for="under-200">Under SG$200</label>
-            </li>
-          </ul>          
+      <!-- Filter Section -->
+      <div class="filter-container">
+        <h3>Filter By</h3>
+        <div class="filter-options">
+            <div class="filter-group">
+                <h4>Gender</h4>
+                <div>
+                    <input type="checkbox" id="all-gender" name="gender" value="all" class="filter">
+                    <label for="all-gender">All</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="men" name="gender" value="men" class="filter">
+                    <label for="men">Men</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="women" name="gender" value="women" class="filter">
+                    <label for="women">Women</label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div>
+                    <input type="checkbox" id="all-prices" name="price" value="" class="filter">
+                    <label for="all-prices">All Prices</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="below-100" name="price" value="below100" class="filter">
+                    <label for="below-100">Below SG$100</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="100-to-200" name="price" value="100to200" class="filter">
+                    <label for="100-to-200">SG$100 - SG$200</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="200-to-300" name="price" value="200to300" class="filter">
+                    <label for="200-to-300">SG$200 - SG$300</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="over-300" name="price" value="over300" class="filter">
+                    <label for="over-300">Over SG$300</label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h4>Brand</h4>
+                <div>
+                    <input type="checkbox" id="adidas" name="brand" value="Adidas" class="filter">
+                    <label for="adidas">Adidas</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="nike" name="brand" value="Nike" class="filter">
+                    <label for="nike">Nike</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="new-balance" name="brand" value="New Balance" class="filter">
+                    <label for="new-balance">New Balance</label>
+                </div>
+            </div>
         </div>
-      
-        <div class="products-container">
-          <div class="flex-item" data-brand="Nike" data-price="305">
-            <img src="../picts/nike_kobe_8.avif" alt="Nike Kobe 8">
-            <p>Nike Kobe 8 Protro 'Venice Beach'</p>
-            <p>SG$305 <del>SG$497</del> (39% off)</p>
+    </div>
+    
+      <!-- Products Section -->
+      <div class="products-container">
+          <div class="flex-item" data-brand="Nike" data-price="156">
+              <img src="..\picts\air_jordan_1_retro_high_og__green.avif" alt="Nike">
+              <p>Jordan 1 High 'Green Glow'</p>
+              <p>SG$156</p>
           </div>
-          <div class="flex-item" data-brand="Nike" data-price="363">
-            <img src="../picts/nike_zoom.avif" alt="Nike Zoom">
-            <p>Nike Zoom Kobe 5 Protro 'X-Ray'</p>
-            <p>SG$363 <del>SG$587</del> (38% off)</p>
+          <div class="flex-item" data-brand="Nike" data-price="80">
+              <img src="..\picts\_women__nike_dunk_low.avif" alt="Nike Dunk Low">
+              <p>(W) Nike Dunk Low 'Photon Dust'</p>
+              <p>SG$80</p>
           </div>
-          <div class="flex-item" data-brand="Nike" data-price="107">
-            <img src="../picts/_women__nike_dunk_low.avif" alt="Nike Dunk Low">
-            <p>(W) Nike Dunk Low 'Photon Dust'</p>
-            <p>SG$107 <del>SG$142</del> (24% off)</p>
+          <div class="flex-item" data-brand="New Balance" data-price="110">
+              <img src="..\picts\new_balance_9060.avif" alt="NB">
+              <p>NB 9060 'Mushroom'</p>
+              <p>SG$110</p>
           </div>
-          <div class="flex-item" data-brand="Nike" data-price="216">
-            <img src="../picts/wu-tang_x_nike_dunk_high.avif" alt="Wu-Tang Dunk High">
-            <p>Wu-Tang Nike Dunk High 2024 'Yellow'</p>
-            <p>SG$216 <del>SG$393</del> (45% off)</p>
+          <div class="flex-item" data-brand="Nike" data-price="223">
+              <img src="..\picts\_women__nike_sabrina_2__orchestrator_.avif" alt="Nike">
+              <p>(W) Nike Sabrina 2 'Orchestrator'</p>
+              <p>SG$223</p>
           </div>
-          <div class="flex-item" data-brand="Nike" data-price="234">
-            <img src="../picts/nike_sb_dunk_low.avif" alt="Nike SB Dunk Low">
-            <p>Nike SB Dunk Low 'J-Pack Chicago'</p>
-            <p>SG$234 <del>SG$303</del> (23% off)</p>
+          <div class="flex-item" data-brand="Nike" data-price="90">
+              <img src="..\picts\nike_dunk_low_premium__medium_curry.avif" alt="Nike">
+              <p>(W) Nike Dunk Low PRM 'Medium Curry'</p>
+              <p>SG$90</p>
           </div>
-          <div class="flex-item" data-brand="Adidas" data-price="420">
-            <img src="../picts/futura_laboratories_x_nike.avif" alt="Futura Laboratories x Nike">
-            <p>Futura Laboratories x Nike SB Dunk</p>
-            <p>SG$420 <del>SG$570</del> (26% off)</p>
+          <div class="flex-item" data-brand="Nike" data-price="156">
+              <img src="..\picts\air_jordan_1_retro_low_og_pe__howard_university__h_0_92107.avif" alt="Nike Jordan">
+              <p>Jordan 1 Retro Low PE 'Howard University'</p>
+              <p>SG$156</p>
           </div>
-          <div class="flex-item" data-brand="New Balance" data-price="185">
-            <img src="../picts/new_balance_2002r.avif" alt="New Balance 2002R">
-            <p>NB 2002R Protection Pack 'Phantom'</p>
-            <p>SG$185 <del>SG$240</del> (23% off)</p>
+          <div class="flex-item" data-brand="Nike" data-price="195">
+              <img src="../picts/nike_sb_dunk_low.avif" alt="Nike SB Dunk Low">
+              <p>Nike SB Dunk Low 'J-Pack Chicago'</p>
+              <p>SG$195</p>
           </div>
-        </div>
+          <div class="flex-item" data-brand="Adidas" data-price="89">
+              <img src="..\picts\adidas_campus_00s__black_white_gum__hq8708_0_41130.avif" alt="Adidas Campus 00s">
+              <p>Adidas Campus 00s 'Black White Gum'</p>
+              <p>SG$89</p>
+          </div>
+          <div class="flex-item" data-brand="New Balance" data-price="175">
+              <img src="..\picts\new_balance_2002r_protection_pack__rain_cloud__m20_0_90868.avif" alt="New Balance 2002R">
+              <p>NB 2002R Protection Pack 'Rain Cloud'</p>
+              <p>SG$175</p>
+          </div>
+          <div class="flex-item" data-brand="Adidas" data-price="100">
+              <img src="..\picts\adidas_samba_og.avif" alt="Nike Kyrie 8">
+              <p>Adidas Samba 'Cloud White Core Black'</p>
+              <p>SG$100</p>
+          </div>
+          <div class="flex-item" data-brand="Adidas" data-price="120">
+              <img src="..\picts\adidas_superstar.avif" alt="Adidas Ultraboost">
+              <p>Adidas Superstar 'Core Black White'</p>
+              <p>SG$120</p>
+          </div>
+          <div class="flex-item" data-brand="Adidas" data-price="45">
+              <img src="..\picts\adidas_yeezy_foam.avif" alt="Converse Chuck Taylor">
+              <p>Adidas Yeezy Foam RNNR 'MX Azure'</p>
+              <p>SG$45</p>
+          </div>
       </div>
+  </div>
 
-
-    <script type="module" src="..\script\script.js"></script>
-    <script type="module" src="..\script\new.js"></script>
+  <script type="module" src="..\script\script.js"></script>
+  <script type="module" src="..\script\new.js"></script>
 </body>
 </html>
