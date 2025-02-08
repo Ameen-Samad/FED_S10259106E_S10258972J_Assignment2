@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="..\styles\styles.css" type="text/css">
+    <link rel="stylesheet" href="..\styles\payment.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="../picts/logo.png" width="120px" alt="Logo"></a>
+            </div>
+            <button class="menu-toggle" id="toggleMenu">☰ Menu</button>
+            <div class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" id="categoriesBtn">Products</a>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="new.html">New</a>
+                            <a href="retail.html">Retail</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-container">
+        <h2>Payment Details</h2>
+        <div class="form-group">
+            <label>Payment Option</label>
+            <div class="payment-options">
+              <label>
+                <input type="radio" name="paymentOption" value="credit" checked /> Credit Card
+              </label>
+              <label>
+                <input type="radio" name="paymentOption" value="debit" /> Debit Card
+              </label>
+            </div>
+          </div>
+        </form>
+        <form class="payment-form">
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+          </div>
+          <div class="form-group">
+            <label for="cardName">Cardholder Name</label>
+            <input type="text" id="cardName" name="cardName" placeholder="Name on Card" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expDate">Expiry Date</label>
+              <input type="text" id="expDate" name="expDate" placeholder="MM/YY" required />
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="password" id="cvv" name="cvv" placeholder="123" required />
+            </div>
+          </div>
+          <button type="submit" class="pay-btn">Pay Now</button>
+      </div>
+    
+      <script type="module" src="..\script\contactus.js"></script>
+</body>
+</html>

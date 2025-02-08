@@ -115,3 +115,22 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Signup form not found.');
   }
 });
+
+
+function showSuccessAnimation() {
+  const animation = document.getElementById('successAnimation');
+  animation.classList.add('show');
+  setTimeout(() => {
+    window.location.href = 'profile.html';
+  }, 6000); // Changed to 6 seconds (6000 milliseconds)
+}
+
+// Override the alert in the login function
+const originalAlert = window.alert;
+window.alert = function(message) {
+  if (message === 'Login successful!') {
+    showSuccessAnimation();
+  } else {
+    originalAlert(message);
+  }
+};

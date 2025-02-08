@@ -92,20 +92,21 @@ removeAllButton.addEventListener("click", () => {
 });
 updateCart();
 
+checkoutButton.addEventListener("click", () => {
+    window.location.href = "payment.html";
+});
+
 
 /* Dropdown Menu */
 document.addEventListener('DOMContentLoaded', () => {
-    initializeDropdown(); // Initialize dropdown menu functionality
+    initializeDropdown(); 
 });
 function initializeDropdown() {
-    const dropdown = document.querySelector('.dropdown'); // Select the dropdown element
-    const dropdownContent = document.getElementById('dropdownContent'); // Select the dropdown content element
+    const dropdown = document.querySelector('.dropdown'); 
+    const dropdownContent = document.getElementById('dropdownContent'); 
 
-    // Check if both dropdown and dropdownContent exist
     if (dropdown && dropdownContent) {
-        // Show dropdown content on mouse enter
         dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
-        // Hide dropdown content on mouse leave
         dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
     }
 }
@@ -113,7 +114,7 @@ function initializeDropdown() {
 
 /* Image Slider */
 document.addEventListener('DOMContentLoaded', () => {
-    initializeCardSlider(); // Initialize card slider functionality
+    initializeCardSlider(); 
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -135,32 +136,25 @@ function initializeImageSlider() {
     // Check if slideContainer exists
     if (!slideContainer) return;
 
-    // Function to show an image based on the index
     const showImage = (index) => {
         slideContainer.innerHTML = `<a href="${images[index].link}"><img src="${images[index].src}" class="slide-img" alt="Slide ${index + 1}"></a>`;
     };
 
-    // Function to cycle through images automatically
     const cycleImage = () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
     };
 
-    // Event listener for left button click
     leftBtn?.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage(currentIndex);
     });
 
-    // Event listener for right button click
     rightBtn?.addEventListener('click', cycleImage);
-
-    // Automatically cycle images every 5 seconds
     setInterval(cycleImage, 5000);
-
-    // Show the first image initially
     showImage(currentIndex);
 }
+
 
 /* Product slider*/
 function initializeCardSlider() {
@@ -174,7 +168,6 @@ function initializeCardSlider() {
     let currentPage = 0;
     const totalPages = 2;
 
-    // Generate dots dynamically
     controls.innerHTML = '';
     for (let i = 0; i < totalPages; i++) {
         const dot = document.createElement('span');
