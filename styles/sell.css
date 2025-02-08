@@ -6,114 +6,179 @@ body {
     padding: 0;
 }
 
+/* 🔹 Navbar */
 .navbar {
+    background-color: #040c1c;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
-    padding: 15px;
+    padding: 7px 30px;
 }
 
-.navbar .logo h1 {
-    color: #69A8E8;
-    margin-left: 20px;
+.logo {
+    padding-left: 5px;
 }
 
 .nav {
-    list-style: none;
+    flex: 1;
     display: flex;
+    justify-content: center;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding-right: 200px;
 }
 
 .nav li {
+    justify-content: center;
     margin-right: 20px;
 }
 
-.nav a {
-    text-decoration: none;
-    color: #69A8E8;
-    font-weight: bold;
-}
-
-.container {
-    max-width: 800px;
+/* 🔹 Main Container */
+.main-container {
+    max-width: 900px;
     margin: auto;
     padding: 20px;
     background-color: #0a1836;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: 20px;
 }
 
+/* 🔹 Headings */
 h2 {
     text-align: center;
 }
 
+/* 🔹 Upload Section */
 .upload-section {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.drop-area {
+/* 🔹 Image Upload Box */
+.image-upload-box {
     border: 2px dashed #69A8E8;
     padding: 30px;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    background-color: #0a1836;
 }
 
-.drop-area:hover {
+.image-upload-box:hover {
     background-color: #162447;
 }
 
-.browse-btn {
-    color: #69A8E8;
+.upload-btn {
+    display: inline-block;
+    background-color: #69A8E8;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
 }
 
-#preview {
-    display: flex;
-    flex-wrap: wrap;
+#browse-btn {
+    background-color: transparent;
+    color: #69A8E8;
+    border: 2px solid #69A8E8;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
 }
 
-#preview img {
+#browse-btn:hover {
+    background-color: #69A8E8;
+    color: black;
+}
+
+/* 🔹 Uploaded Images Preview */
+.uploaded-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.uploaded-images img {
     width: 80px;
     height: 80px;
     margin: 5px;
     border-radius: 5px;
     object-fit: cover;
+    border: 2px solid #69A8E8;
 }
 
-.form-section {
-    display: flex;
-    flex-direction: column;
+/* 🔹 Form Fields */
+.form-group {
+    margin-bottom: 15px;
 }
 
 label {
-    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-input, textarea, select, button {
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: none;
+input, textarea, select {
     width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #69A8E8;
+    background-color: #040C1C;
+    color: #69A8E8;
 }
 
-button {
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* 🔹 Condition Options */
+.condition-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.condition-btn {
+    background-color: transparent;
+    color: #69A8E8;
+    border: 2px solid #69A8E8;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.condition-btn.selected {
+    background-color: #69A8E8;
+    color: black;
+}
+
+/* 🔹 Submit Button */
+#listItemBtn {
+    width: 100%;
     background-color: #69A8E8;
     color: black;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
-button:hover {
+#listItemBtn:hover {
     background-color: #517dad;
 }
-.condition-btn.selected {
-    background-color: #69A8E8;
-    color: white;
-    border: 2px solid #040C1C;
+
+/* 🔹 Status Message */
+#statusMessage {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
 }
