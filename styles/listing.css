@@ -112,8 +112,3 @@ button {
 button:hover {
     background-color: #517dad;
 }
-.condition-btn.selected {
-    background-color: #69A8E8;
-    color: white;
-    border: 2px solid #040C1C;
-}

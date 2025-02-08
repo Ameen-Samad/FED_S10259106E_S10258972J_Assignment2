@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell</title>
+    <title>New</title>
+    <link rel="stylesheet" href="..\styles\sell.css">
     <link rel="stylesheet" href="..\styles\styles.css" type="text/css">
-    <link rel="stylesheet" href="..\styles\sell.css" type="text/css">
+    <link rel="stylesheet" href="..\styles\listing.css" type="text/css">
 </head>
 <body>
     <div class="main">
@@ -20,8 +21,8 @@
                     <li class="dropdown">
                         <a href="javascript:void(0)" class="dropbtn" id="categoriesBtn">Products</a>
                         <div class="dropdown-content" id="dropdownContent">
-                            <a href="new.html">New</a>
-                            <a href="retail.html">Retail</a>
+                            <a href="./new.html">New</a>
+                            <a href="./retail.html">Retail</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact Us</a></li>
@@ -32,24 +33,64 @@
         </div>
     </div>
 
-
     <div class="main-container">
-        <div class="top-section">
-            <div class="product-box" id="featured-product">
-                <p>Loading product...</p>
+        <h2>List an Item</h2>
+
+        <div class="featured-product"></div>
+
+        <div class="upload-section">
+            <div class="image-upload-box" id="drop-area">
+                <label for="fileInput" class="upload-btn">Select Photos</label>
+                <input type="file" id="fileInput" accept="image/*" multiple>
+                <button id="browse-btn">Browse Files</button>
+                <p>or drag photos here (Up to 10 photos)</p>
             </div>
-            <div class="product-box" id="text-info">
-                <h2>Product Info</h2>
-                <p>Details about the product will be displayed here.</p>
+            <div class="uploaded-images" id="uploadedImages">
+                <div id="preview"></div>
             </div>
         </div>
-        <div class="bottom-section" id="product-list">
-            <p>Loading products...</p>
+
+        <div class="form-group">
+            <label for="name">Item Name</label>
+            <input type="text" id="name" placeholder="Enter item name" required>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Enter item description"></textarea>
+        </div>
+    
+        <div class="form-group">
+            <label>Condition</label>
+            <div class="condition-options" id="conditionOptions">
+                <button class="condition-btn" data-value="brand-new">Brand New</button>
+                <button class="condition-btn" data-value="like-new">Like New</button>
+                <button class="condition-btn" data-value="lightly-used">Lightly Used</button>
+                <button class="condition-btn" data-value="well-used">Well Used</button>
+                <button class="condition-btn" data-value="heavily-used">Heavily Used</button>
+            </div>
+        </div>
+        
+    
+        <div class="form-group">
+            <label for="price">Price ($)</label>
+            <input type="number" id="price" placeholder="Enter price" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="unisex">Unisex</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+            </select>
+        </div>
+
+        <button id="listItemBtn">List Now</button>
+    
+        <p id="statusMessage"></p>
+    
 
     <script type="module" src="..\script\sell.js"></script>
-    <script type="module" src="..\script\script.js"></script>
-
 </body>
 </html>

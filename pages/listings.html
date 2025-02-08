@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell</title>
+    <link rel="stylesheet" href="..\styles\styles.css" type="text/css">
+    <link rel="stylesheet" href="..\styles\sell.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="../picts/logo.png" width="120px" alt="Logo"></a>
+            </div>
+            <button class="menu-toggle" id="toggleMenu">☰ Menu</button>
+            <div class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" id="categoriesBtn">Products</a>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="new.html">New</a>
+                            <a href="retail.html">Retail</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-container">
+        <div class="top-section">
+            <div class="product-box" id="featured-product">
+                <p>Loading product...</p>
+            </div>
+            <div class="product-box" id="text-info">
+                <h2>Product Info</h2>
+                <p>Details about the product will be displayed here.</p>
+            </div>
+        </div>
+        <div class="bottom-section" id="product-list">
+            <p>Loading products...</p>
+        </div>
+    </div>
+
+    <script type="module" src="..\script\sell.js"></script>
+    <script type="module" src="..\script\script.js"></script>
+
+</body>
+</html>
