@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy (W) Nike Dunk Low 'Photon Dust'</title>
+    <link rel="stylesheet" href="..\styles\styles.css" type="text/css">
+    <link rel="stylesheet" href="..\styles\buy.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="../picts/logo.png" width="120px" alt="Logo"></a>
+            </div>
+            <button class="menu-toggle" id="toggleMenu">☰ Menu</button>
+            <div class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" id="categoriesBtn">Products</a>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="new.html">New</a>
+                            <a href="retail.html">Retail</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-container">
+        <div class="product-image">
+            <br>
+            <br>
+            <img src="..\picts\nike_dunk_low_premium.avif" alt="(W) Nike Dunk Low 'Photon Dust'" id="mainImage">
+        </div>
+        <div class="product-details">
+            <h1>(W) Nike Dunk Low 'Photon Dust'</h1>
+            <p class="price">$107</p>
+            <div class="product-description">
+                <p>The Nike Dunk Low Photon Dust (WMNS) sneaker offers a stylish and comfortable footwear option for women. Featuring the iconic Nike branding and a unique colorway, these sneakers will definitely turn heads. Made with high-quality materials and a durable sole, these Nike Dunk Low sneakers are perfect for everyday wear. Step up your sneaker game with these eye-catching kicks from Nike.</p>
+            </div>
+            <div class="size-selector">
+                <h3>Select Size</h3>
+                <div class="size-grid">
+                    <button class="size-btn" data-size="7">US 7</button>
+                    <button class="size-btn" data-size="7.5">US 7.5</button>
+                    <button class="size-btn" data-size="8">US 8</button>
+                    <button class="size-btn" data-size="8.5">US 8.5</button>
+                    <button class="size-btn" data-size="9">US 9</button>
+                    <button class="size-btn" data-size="9.5">US 9.5</button>
+                    <button class="size-btn" data-size="10">US 10</button>
+                    <button class="size-btn" data-size="10.5">US 10.5</button>
+                    <button class="size-btn" data-size="11">US 11</button>
+                    <button class="size-btn" data-size="11.5">US 11.5</button>
+                    <button class="size-btn" data-size="12">US 12</button>
+                    <button class="size-btn" data-size="13">US 13</button>
+                </div>
+            </div>
+            <button id="add-to-cart-btn" disabled>Add to Cart</button>
+        </div>
+    </div>
+
+    <button id="cart-button" class="cart-button">View Cart</button>
+    <div id="cart-popup" class="cart-popup hidden">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p><span id="cart-total">$0.00</span></p>
+        <button id="remove-all" class="remove-all-button">Remove All</button>
+        <button id="checkout-button">Checkout</button>
+        <button id="close-cart-button" class="close-cart-button">Close</button>
+    </div>
+
+    <script type="module" src="..\script\product.js"></script>
+</body>
+</html>

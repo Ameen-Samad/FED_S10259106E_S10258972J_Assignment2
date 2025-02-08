@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeImageSlider() {
     const images = [
-        { src: "../picts/nb banner.webp", link: "./products.html" },
-        { src: "../picts/asic banner.webp", link: "./products.html" },
-        { src: "../picts/adidas banner.webp", link: "./products.html" }
+        { src: "../picts/nb banner.webp", link: "./new.html" },
+        { src: "../picts/asic banner.webp", link: "./new.html" },
+        { src: "../picts/adidas banner.webp", link: "./new.html" }
     ]; 
 
     let currentIndex = 0; 
