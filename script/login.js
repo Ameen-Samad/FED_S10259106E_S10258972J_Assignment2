@@ -117,20 +117,72 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function showSuccessAnimation() {
-  const animation = document.getElementById('successAnimation');
-  animation.classList.add('show');
-  setTimeout(() => {
-    window.location.href = 'profile.html';
-  }, 6000); // Changed to 6 seconds (6000 milliseconds)
-}
 
-// Override the alert in the login function
-const originalAlert = window.alert;
-window.alert = function(message) {
-  if (message === 'Login successful!') {
-    showSuccessAnimation();
-  } else {
-    originalAlert(message);
+
+
+// Ensure the success animation container is hidden on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const successAnimation = document.getElementById('success-animation');
+  if (successAnimation) {
+    successAnimation.classList.add('hidden');
   }
-};
+});
+
+// Override the login function to show the animation before redirecting
+async function login(email, password) {
+  const BASE_URL = 'https://loginid-056f.restdb.io/rest/account';
+  const API_KEY = '6785c5c5630e8a5f6d0b141f';
+
+  try {
+    const response = await fetch(BASE_URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-apikey': API_KEY
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const users = await response.json();
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+
+      // Hide the login container (make sure your login elements are wrapped in a container with class "container")
+      const container = document.querySelector('.container');
+      if (container) {
+        container.style.display = 'none';
+      }
+
+      // Show the success animation container
+      const animationContainer = document.getElementById('success-animation');
+      if (animationContainer) {
+        animationContainer.classList.remove('hidden');
+      }
+
+      // Wait 6 seconds before redirecting to the profile page
+      setTimeout(() => {
+        window.location.href = 'profile.html';
+      }, 6000);
+    } else {
+      const errorMessageElement = document.getElementById('errorMessage');
+      if (errorMessageElement) {
+        errorMessageElement.innerText = 'Invalid email or password';
+      } else {
+        console.warn('Error message element not found.');
+      }
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    const errorMessageElement = document.getElementById('errorMessage');
+    if (errorMessageElement) {
+      errorMessageElement.innerText = 'An error occurred. Please try again.';
+    } else {
+      console.warn('Error message element not found.');
+    }
+  }
+}

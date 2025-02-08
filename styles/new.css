@@ -5,6 +5,38 @@
   padding: 20px;
 }
 
+/* lottie animation */  
+.checkout-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #040c1c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -50px;
+}
+
+.loading-text {
+    color: #69A8E8;
+    font-style: italic;
+    margin-bottom: -30px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Filter Section */
 .filter-container {
   background-color: #f5f5f5;
@@ -66,18 +98,6 @@
   color: #69A8E8;
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-  .container {
-      flex-direction: column;
-  }
-  
-  .filter-container {
-      margin-right: 0;
-      margin-bottom: 20px;
-      width: auto;
-  }
-}
 
 /* Products Section */
 .products-container {
@@ -194,6 +214,20 @@ a{  /* Remove underline from links */
 }
 
 .close-cart-button:hover {
-  color: #ff4d4d; /* Change color on hover */
-  transform: scale(1.1); /* Slightly increase size on hover */
+  color: #ff4d4d; 
+  transform: scale(1.1);
+}
+
+
+
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
+  
+  .filter-container {
+      margin-right: 0;
+      margin-bottom: 20px;
+      width: auto;
+  }
 }

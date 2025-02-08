@@ -5,6 +5,38 @@
     padding: 0;
 }
 
+/* lottie animation */  
+.checkout-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #040c1c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -50px;
+}
+
+.loading-text {
+    color: #69A8E8;
+    font-style: italic;
+    margin-bottom: -30px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
 /*navbar*/
 .navbar {
     background-color: #040c1c;
@@ -151,6 +183,11 @@ ul li a{
 .right-btn {
     right: 10px;
 }
+
+a{  /* Remove underline from links */
+    text-decoration: none;
+    color: black;
+  }
 
 /* Product slider */
 .promo2 {

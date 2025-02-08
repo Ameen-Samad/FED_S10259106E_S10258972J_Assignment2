@@ -32,8 +32,18 @@
         </div>
     </div>
 
+    <div id="checkout-animation" class="checkout-animation hidden">
+        <dotlottie-player 
+            src="https://lottie.host/a0c2651f-e5ba-4be7-a7f3-c80b4fa740fa/K7jaND0Zay.lottie" 
+            speed="1" 
+            style="width: 300px; height: 300px" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+        <div class="loading-text">Loading... Please wait<br/></div>
+    </div>
+
     <div class="container">
-      <!-- Filter Section -->
       <div class="filter-container">
         <h3>Filter By</h3>
         <div class="filter-options">
@@ -168,6 +178,7 @@
       <button id="close-cart-button" class="close-cart-button">&times;</button>
   </div>
 
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
   <script type="module" src="..\script\script.js"></script>
   <script type="module" src="..\script\new.js"></script>
 </body>
