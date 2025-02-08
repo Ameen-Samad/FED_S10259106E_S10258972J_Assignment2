@@ -1,4 +1,4 @@
-/* Initialize Dropdown Menu */
+/*Dropdown Menu */
 document.addEventListener('DOMContentLoaded', () => {
     initializeDropdown(); // Initialize dropdown menu functionality
 });
@@ -16,7 +16,7 @@ function initializeDropdown() {
 }
 
 
-
+/* Cart */
 document.addEventListener('DOMContentLoaded', () => {
     // --- For Each Product Container (Multiple Items on Page) ---
     const productContainers = document.querySelectorAll('.product-container');

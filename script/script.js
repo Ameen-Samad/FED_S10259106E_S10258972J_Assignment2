@@ -1,4 +1,4 @@
-/* menu */
+/* navbar menu */
 window.onload = function() {
     const menuToggle = document.getElementById("toggleMenu")
     const navbar = document.getElementById("nav");
@@ -22,6 +22,7 @@ window.onload = function() {
     });
     menuToggle.addEventListener('click', toggleMenu)
 }
+
 
 /* cart */
 const cartItemsContainer = document.getElementById("cart-items");
@@ -92,7 +93,7 @@ removeAllButton.addEventListener("click", () => {
 updateCart();
 
 
-/* Initialize Dropdown Menu */
+/* Dropdown Menu */
 document.addEventListener('DOMContentLoaded', () => {
     initializeDropdown(); // Initialize dropdown menu functionality
 });
@@ -110,7 +111,7 @@ function initializeDropdown() {
 }
 
 
-/** Initialize Image Slider */
+/* Image Slider */
 document.addEventListener('DOMContentLoaded', () => {
     initializeCardSlider(); // Initialize card slider functionality
 });

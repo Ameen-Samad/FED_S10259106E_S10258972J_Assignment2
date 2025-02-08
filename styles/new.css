@@ -126,3 +126,74 @@ a{  /* Remove underline from links */
   text-decoration: none;
   color: black;
 }
+
+/* Updated cart button styles */
+.cart-button {
+  background-color: #040c1c;
+  width: 80px;
+  height: 80px;
+  font-size: 16px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.cart-button:hover {
+  background-color: #0a1836;
+  transform: scale(1.05);
+}
+
+/* Enhanced cart popup styles */
+.cart-popup {
+  background-color: #f8f9fa;
+}
+
+.cart-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-from-cart {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-button {
+  background-color: #040c1c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+.checkout-button:hover {
+  background-color: #0a1836;
+}
+
+/* Close button styled as a cross */
+.close-cart-button {
+  position: absolute;
+  top: 1px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #040c1c;
+  height: 50px;
+}
+
+.close-cart-button:hover {
+  color: #ff4d4d; /* Change color on hover */
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
