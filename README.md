@@ -78,3 +78,6 @@ Credits:
 
     Acknowledgements:
     I received inspiration for this project from https://novelship.com/
+
+    Logo:
+    We have used this website to generate the logo: https://www.design.com/
