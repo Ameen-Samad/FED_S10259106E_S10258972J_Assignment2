@@ -1,19 +1,14 @@
 # FED_S10259106E_S10258972J_Assignment2
 
 MokeSell:
-    One or two paragraphs providing an overview of your project. Tell us about your project.
-
-    Essentially, this part is your sales pitch.
+    The website that we have created is mainly focused on selling and reselling shoes. Users can browse and buy shoes and not only that but they can also create their own listing. They can create an account for themselvses and login to the webiste, which stores their data such as their lisitngs if they choose to put up any.
 
 
 
 Design Process:
-    Provide us insights about your design process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-    In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-
-    As a user type, I want to perform an action, so that I can achieve a goal.
-    This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory) Include the Adobe XD wireframe as a folder. You can include the XD share url.
+    Before we started creating the website, we got inspired by novelships website while making our wireframes and hence, we decided to create a website that is user-friendly which focuses on shoes. The target audience for this website would be shoes enjoyer, these people would often buy shoes whether its for wearing them or collecting them and most importantly, they would also sell them. With our website, they would be able to do all of it from buying shoes to selling them as well. They can create an account for themselves and create a lisitng of their choice and upload it on to the website to sell them.
+    
+    Wireframe: https://www.figma.com/design/0V81buwR4VxhUzcwsuMc0s/FED-Assignment-2?node-id=0-1&t=gcsMSludhXP6bnv4-1
 
 
 
@@ -21,9 +16,10 @@ Features:
     In this section, you should go over the different parts of your project, and describe each in a sentence or so.
 
     Existing Features
-    Feature 1 - allows users X to achieve Y, by having them fill out Z
-    ...
-    In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+    Feature 1 - Filter: Allows user to filter product.
+    Feature 2 - Cart and Payment: Allows user to add things in cart and pay them.
+    Feature 3 - Lottie animation for login, checkout and payment as loading screen.
+    
 
     Features Left to Implement:
         - A feedback feature in the contac us page.
@@ -31,17 +27,25 @@ Features:
 
 
 Technologies Used:
-    In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used. Example below:
-    JQuery
-    The project uses JQuery to simplify DOM manipulation.
+    In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used. 
+    
+    HTML
+    The project uses HTML in order to create the website.
+
+    CSS
+    Uses CSS to make the website look more aesthetic.
+
+    JS
+    Used JS to implement features making the website more interactive.
+
+    Lottie animation
+    The project uses lottie animation as a loading screen.
 
  
 
+
 Assistive AI:
-    In this section you should document the process of using AI tools eg, ChatGPT, Gemini etc to help you with the development of features/functionalities of your web application. (Failure to document your use of AI tools will result in loss of marks.) Example below:
-    Spotify API: ChatGPT was used to help with the implementation of the Spotify API (include screenshots of generated AI codes.)
-    sample img
-    //
+    In this section you should document the process of using AI tools eg, ChatGPT, Gemini etc to help you with the development of features/functionalities of your web application. (Failure to document your use of AI tools will result in loss of marks.) 
 
     Cart: For the cart, ChatGPT was used to help me implemnet the JS, in order for the cart to work.
     picts\Screenshot 2025-02-09 133718.png
@@ -52,32 +56,25 @@ Assistive AI:
 
 
 Testing:
-    For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+    Contact Us Page:
+    Go to the "Contact Us" page where there is a form you can fill up and try to submit the empty form and ensure that an error message about the required fields appears. After that input the correct details and a message that says successful should appear.
 
-    Contact form
-    Go to the "Contact Us" page
-    Try to submit the empty form and verify that an error message about the required fields appears
-    Try to submit the form with an invalid email address and verify that a relevant error message appears
-    Try to submit the form with all inputs valid and verify that a success message appears.
     In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-    You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-    If this section grows too long, you may want to split it off into a separate file and link to it from here.
+    On monitor. the website will look normal but when you minimize the browser to width 650, it will look different as compared to the full screen one as we have made it responsive by adding the @media.
 
 
 
 Credits:
-    Content
+    Content:
     The text for the products were obtained from https://novelship.com/
 
 
-    Media
+    Media:
     The photos used in this site were obtained from https://novelship.com/
 
 
     Acknowledgements:
-    I received inspiration for this project from https://novelship.com/
+    We received inspiration for this project from https://novelship.com/
 
     Logo:
     We have used this website to generate the logo: https://www.design.com/
