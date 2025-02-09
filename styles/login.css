@@ -151,3 +151,52 @@ input {
 .signup-btn:hover {
   background-color: #03356E;
 }
+
+@media (max-width: 650px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 80px;
+  }
+  
+  .login-section,
+  .signup-section {
+    padding: 20px;
+  }
+  
+  .logo {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  form {
+    gap: 10px;
+  }
+  
+  input {
+    padding: 8px;
+  }
+  
+  .social-login {
+    flex-direction: column;
+  }
+  
+  .social-btn {
+    padding: 8px 0;
+  }
+  
+  .submit-btn,
+  .signup-btn {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
