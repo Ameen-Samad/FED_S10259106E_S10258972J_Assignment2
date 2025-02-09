@@ -83,53 +83,53 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    listItemBtn.addEventListener("click", async () => {
-        const name = nameInput.value.trim();
-        const description = descriptionInput.value.trim();
-        const price = parseFloat(priceInput.value);
-        const gender = genderSelect.value;
-
-        if (!name || !price || imageFiles.length === 0 || !selectedCondition) {
-            statusMessage.innerText = "⚠️ Please fill all required fields and upload at least one image.";
-            statusMessage.style.color = "red";
+    document.getElementById('listItemBtn').addEventListener('click', async () => {
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (!loggedInUser) {
+            alert('You must be logged in to list an item.');
             return;
         }
-
-        statusMessage.innerText = "Uploading... Please wait.";
-        statusMessage.style.color = "blue";
-
-        const imagesBase64 = await Promise.all(imageFiles.map(fileToBase64));
-
-        const listingData = {
-            name,
-            description,
-            price,
-            gender,
-            condition: selectedCondition,
-            image: imagesBase64
+    
+        const name = document.getElementById('name').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const price = parseFloat(document.getElementById('price').value);
+        const gender = document.getElementById('gender').value;
+    
+        if (!name || !description || !price || isNaN(price)) {
+            alert('Please fill in all fields correctly.');
+            return;
+        }
+    
+        const newListing = {
+            name: name,
+            description: description,
+            price: price,
+            gender: gender,
+            userId: loggedInUser._id, // Link to the user
+            createdAt: new Date().toISOString(),
         };
-
+    
         try {
-            const response = await fetch(API_URL, {
-                method: "POST",
+            const response = await fetch('https://loginid-056f.restdb.io/rest/listings', {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": API_KEY
+                    'Content-Type': 'application/json',
+                    'x-apikey': '6785c5c5630e8a5f6d0b141f',
                 },
-                body: JSON.stringify(listingData)
+                body: JSON.stringify(newListing),
             });
-
-            if (!response.ok) throw new Error("Failed to submit listing.");
-
-            statusMessage.innerText = "✅ Listing submitted successfully!";
-            statusMessage.style.color = "green";
-            clearForm();
+    
+            if (response.ok) {
+                alert('Listing added successfully!');
+                window.location.reload();
+            } else {
+                alert('Error adding listing.');
+            }
         } catch (error) {
-            console.error("Error submitting listing:", error);
-            statusMessage.innerText = "❌ Failed to submit listing.";
-            statusMessage.style.color = "red";
+            console.error('Error:', error);
         }
     });
+    
 
     function fileToBase64(file) {
         return new Promise((resolve, reject) => {
