@@ -6,7 +6,6 @@ function initializeDropdown() {
     const dropdown = document.querySelector('.dropdown'); 
     const dropdownContent = document.getElementById('dropdownContent'); 
 
-    // Check if both dropdown and dropdownContent exist
     if (dropdown && dropdownContent) {
         dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
         dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));

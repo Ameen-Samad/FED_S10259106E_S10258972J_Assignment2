@@ -23,6 +23,20 @@ window.onload = function() {
     menuToggle.addEventListener('click', toggleMenu)
 }
 
+/* Initialize Dropdown Menu */
+document.addEventListener('DOMContentLoaded', () => {
+  initializeDropdown(); 
+});
+function initializeDropdown() {
+  const dropdown = document.querySelector('.dropdown'); 
+  const dropdownContent = document.getElementById('dropdownContent'); 
+
+  if (dropdown && dropdownContent) {
+      dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
+      dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
+  }
+}
+
 
 /* Cart */
 document.addEventListener('DOMContentLoaded', () => {
@@ -187,7 +201,7 @@ function initializeImageSlider() {
     const leftBtn = document.querySelector('.left-btn'); 
     const rightBtn = document.querySelector('.right-btn'); 
 
-    // Check if slideContainer exists
+
     if (!slideContainer) return;
 
     const showImage = (index) => {

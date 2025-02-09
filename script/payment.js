@@ -36,3 +36,44 @@ window.onload = function() {
     });
     menuToggle.addEventListener('click', toggleMenu)
 }
+
+
+
+/* Pop up and lottie */
+const modal = document.getElementById('paymentSuccessModal');
+    const closeButton = document.querySelector('.modal .close');
+    const paymentForm = document.querySelector('.payment-form');
+    const lottieContainer = document.getElementById('lottieContainer');
+    const paymentContainer = document.querySelector('.payment-container');
+    let modalRedirectTimeout; 
+
+    paymentForm.addEventListener('submit', function(e) {
+      e.preventDefault(); 
+
+      paymentContainer.style.display = 'none';
+
+      lottieContainer.style.display = 'flex';
+
+      setTimeout(function() {
+        lottieContainer.style.display = 'none';
+        modal.style.display = 'block';
+
+        modalRedirectTimeout = setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 3000);
+      }, 3000);
+    });
+
+    function closeModalAndRedirect() {
+      modal.style.display = 'none';
+      clearTimeout(modalRedirectTimeout); 
+      window.location.href = 'index.html';
+    }
+
+    closeButton.addEventListener('click', closeModalAndRedirect);
+
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        closeModalAndRedirect();
+      }
+    });
