@@ -19,11 +19,10 @@ Features:
     Feature 1 - Filter: Allows user to filter product.
     Feature 2 - Cart and Payment: Allows user to add things in cart and pay them.
     Feature 3 - Lottie animation for login, checkout and payment as loading screen.
+    Feature 4 - Contents from ContactUs page will be sent into the database.
+    Feature 5 - Sell page allows users to post their listings into the database.
+    Feature 6 - Profile page reads from the database to fill up the username and email section
     
-
-    Features Left to Implement:
-        - A feedback feature in the contac us page.
-
 
 
 Technologies Used:
@@ -52,6 +51,10 @@ Assistive AI:
 
     Lottie animation: ChatGPT was used to help with the implementation of the animation so that it loads when users login successfully.
     picts\Screenshot 2025-02-09 133303.png
+
+    Profile: ChatGPT was used to help with fixing the JS for the profile page. picts\profile.png
+
+    Sell: ChatGPT was used to help implement the drag and drop feature for the sell page. picts\sell.png
 
 
 
