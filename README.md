@@ -66,7 +66,7 @@ Testing:
     On monitor. the website will look normal but when you minimize the browser to width 650, it will look different as compared to the full screen one as we have made it responsive by adding the @media.
 
 
-
+GitHub page: https://github.com/Ameen-Samad/FED_S10259106E_S10258972J_Assignment2
 Credits:
     Content:
     The text for the products were obtained from https://novelship.com/
