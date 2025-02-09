@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.head.appendChild(script);
   
             setTimeout(() => {
-                window.location.href = "./payment.html";
+                window.location.href = "pages/payment.html";
             }, 6000);
         });
     }
