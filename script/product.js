@@ -6,32 +6,11 @@ function initializeDropdown() {
     const dropdown = document.querySelector('.dropdown'); 
     const dropdownContent = document.getElementById('dropdownContent'); 
 
-    // Check if both dropdown and dropdownContent exist
     if (dropdown && dropdownContent) {
         dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
         dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
     }
 }
-
-
-function showSuccessAnimation() {
-  const animation = document.getElementById('successAnimation');
-  animation.classList.add('show');
-  setTimeout(() => {
-    window.location.href = 'profile.html';
-  }, 6000); // Changed to 6 seconds (6000 milliseconds)
-}
-
-// Override the alert in the login function
-const originalAlert = window.alert;
-window.alert = function(message) {
-  if (message === 'Login successful!') {
-    showSuccessAnimation();
-  } else {
-    originalAlert(message);
-  }
-};
-
 
 
 /* navbar menu */
@@ -123,9 +102,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const checkoutButton = document.getElementById("checkout-button");
   if (checkoutButton) {
-    checkoutButton.addEventListener("click", () => {
-      window.location.href = "./payment.html";
-    });
+      checkoutButton.addEventListener("click", () => {
+          cartPopup.classList.add("hidden");
+          cartPopup.classList.remove("visible");
+
+          const checkoutAnimation = document.getElementById("checkout-animation");
+          checkoutAnimation.classList.remove("hidden");
+
+          const script = document.createElement("script");
+          script.src = "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
+          script.type = "module";
+          document.head.appendChild(script);
+
+          setTimeout(() => {
+              window.location.href = "./payment.html";
+          }, 6000);
+      });
   }
 });
 

@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+<<<<<<< HEAD
 // Fetch listings associated with the logged-in user
 async function fetchUserListings(userId) {
   const API_URL = 'https://loginid-056f.restdb.io/rest/listings';
@@ -84,3 +85,36 @@ function initializeDropdown() {
   }
 }
 
+=======
+    if (dropdown && dropdownContent) {
+        dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
+        dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
+    }
+}
+
+
+/* navbar menu */
+window.onload = function() {
+  const menuToggle = document.getElementById("toggleMenu")
+  const navbar = document.getElementById("nav");
+
+  function toggleMenu() {
+      if (navbar.style.display === 'flex'){
+          navbar.style.display = 'none';
+          menuToggle.textContent = "☰ Menu";
+      } else {
+          navbar.style.display = 'flex';
+          menuToggle.textContent = "✖ Close"; 
+      }
+  }
+
+  window.addEventListener("resize", () => {
+      if (window.innerWidth >= 650) {
+          nav.style.display = "flex";
+      } else {
+          nav.style.display = "none";
+      }
+  });
+  menuToggle.addEventListener('click', toggleMenu)
+}
+>>>>>>> 3d95c0180488087ce53edf2a2142d1b31fcfa930
